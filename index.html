@@ -6,57 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- <script src="./libs/axios.min.js"></script> -->
 </head>
 
-<body>
+<body class="body">
+    <div class="main">
+    <div class="one">
     <h1>Add a product</h1>
 
     <!-- <a href="./index.html">Home</a> -->
     <!-- <a href="./products.html">All Products</a> -->
-    <a href="./index.html">Home</a>
-    <a href="./products.html">All products</a>
+    <button> <a href="./index.html">Home</a></button>
+    <button><a href="./products.html">All products</a></button>
 
-
+    </div>
     <form onsubmit="createProduct(); return false ">
-
-        <label for="productName">Product Name</label>
+        <div class="two">
+        <label for="productName">Product Name:</label>
         <input type="text" id="productName" required>
         <br>
+        <br>
 
-        <label for="productPrice">Product Price</label>
+        <label for="productPrice">Product Price:</label>
         <input type="number" id="productPrice" required>
         <br>
-
-        <label for="currencyCode">Currency Code</label>
+        <br>
+        <label for="currencyCode">Currency Code:</label>
         <input type="text" id="currencyCode" required>
         <br>
-
-        <label for="numberOfSale">Number Of Sale</label>
+        <br>
+        <label for="numberOfSale">Number Of Sale:</label>
         <input type="number" id="numberOfSale" required>
         <br>
-
-        <label for="rating">Product Rating</label>
+        <br>
+        <label for="rating">Product Rating:</label>
         <input type="number" min="0" max="5" id="rating" required>
         <br>
-
-        <label for="isFreeShipping">Free Shipping</label>
+        <br>
+        <label for="isFreeShipping">Free Shipping:</label>
         <select name="isFreeShipping" id="isFreeShipping">
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
         <br>
-
-        <label for="shopName">shop Name</label>
+        <br>
+        <label for="shopName">shop Name:</label>
         <input type="text" id="shopName" required>
         <br>
-
+        <br>
         <input type="submit" value="Add in database">
     </form>
-
+     </div>
     <p id="message"></p>
-
+ </div>
 
 
     <script>
@@ -70,8 +74,8 @@
             let isFreeShipping = document.querySelector("#isFreeShipping").value;
             let shopName = document.querySelector("#shopName").value;
 
-
-            axios.post('http://localhost:3000/product', {
+            // axios.post('https://localhost:3000/product', {
+            axios.post('https://new-e.herokuapp.com/product', {
                 productName,
                 productPrice,
                 currencyCode,

@@ -12,40 +12,27 @@
 </head>
 
 <body>
+    <div class="mainpro">
+        <div class="onepro">
     <h1>Ali Express</h1>
-    <a href="./index.html">Home</a>
-    <a href="./products.html">All products</a>
+    <div class="but">
+  <button> <a href="./index.html">Home</a></button>
+   <button><a href="./products.html">All products</a></button>
+   </div>
+    </div>
 
-
+</div>
 
     <div id="productsListDiv">
 
-        <!-- <div>
+        <!--  <div>
        <img src="./img/mini shoulder bag.webp">
        <p>Nappy Backpack Bag Mummy Large Capacity Bag Mom Baby Multi-function Waterproof Outdoor Travel Diaper Bags For Baby Care</p> 
       <p><span>PKR</span><span>3000</span></p>
       <p>230 sold</p>
       <p>free Shipping</p>
       <p>MariaEstore</p>
-    </div>
-
-    <div>
-        <img src="./img/mini shoulder bag.webp">
-        <p>Nappy Backpack Bag Mummy Large Capacity Bag Mom Baby Multi-function Waterproof Outdoor Travel Diaper Bags For Baby Care</p> 
-       <p><span>PKR</span><span>3000</span></p>
-       <p>230 sold</p>
-       <p>free Shipping</p>
-       <p>MariaEstore</p>
-     </div>  
-
-     <div>
-        <img src="./img/mini shoulder bag.webp">
-        <p>Nappy Backpack Bag Mummy Large Capacity Bag Mom Baby Multi-function Waterproof Outdoor Travel Diaper Bags For Baby Care</p> 
-       <p><span>PKR</span><span>3000</span></p>
-       <p>230 sold</p>
-       <p>free Shipping</p>
-       <p>MariaEstore</p>
-     </div> -->
+    </div> -->
 
 
     </div>
@@ -55,8 +42,8 @@
 
         async function getAllProducts() {
             try {
-
-                const response = await axios.get("http://localhost:3000/products");
+            const response = await axios.get("https://new-e.herokuapp.com/products");
+                // const response = await axios.get("http://localhost:3000/products");
                 console.log(response.data.data);
 
                 let productsListDiv = document.querySelector("#productsListDiv")
@@ -74,7 +61,7 @@
                             <p> ${eachProduct.numberOfSale || 0} sold </p>
                             <p> ${(eachProduct.isFreeShipping) ? "free shipping" : "no free shipping"} </p>
                             <p>${eachProduct.shopName}</p>
-                        </div>`
+                        </div><br>`
                 })
 
             } catch (error) {
