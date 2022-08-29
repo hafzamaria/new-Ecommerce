@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="./libs/axios.min.js"></script> -->
+</head>
+
+<body>
+    <h1>Ali Express</h1>
+    <a href="./index.html">Home</a>
+    <a href="./products.html">All products</a>
+
+
+
+    <div id="productsListDiv">
+
+        <!-- <div>
+       <img src="./img/mini shoulder bag.webp">
+       <p>Nappy Backpack Bag Mummy Large Capacity Bag Mom Baby Multi-function Waterproof Outdoor Travel Diaper Bags For Baby Care</p> 
+      <p><span>PKR</span><span>3000</span></p>
+      <p>230 sold</p>
+      <p>free Shipping</p>
+      <p>MariaEstore</p>
+    </div>
+
+    <div>
+        <img src="./img/mini shoulder bag.webp">
+        <p>Nappy Backpack Bag Mummy Large Capacity Bag Mom Baby Multi-function Waterproof Outdoor Travel Diaper Bags For Baby Care</p> 
+       <p><span>PKR</span><span>3000</span></p>
+       <p>230 sold</p>
+       <p>free Shipping</p>
+       <p>MariaEstore</p>
+     </div>  
+
+     <div>
+        <img src="./img/mini shoulder bag.webp">
+        <p>Nappy Backpack Bag Mummy Large Capacity Bag Mom Baby Multi-function Waterproof Outdoor Travel Diaper Bags For Baby Care</p> 
+       <p><span>PKR</span><span>3000</span></p>
+       <p>230 sold</p>
+       <p>free Shipping</p>
+       <p>MariaEstore</p>
+     </div> -->
+
+
+    </div>
+
+
+    <script>
+
+        async function getAllProducts() {
+            try {
+
+                const response = await axios.get("http://localhost:3000/products");
+                console.log(response.data.data);
+
+                let productsListDiv = document.querySelector("#productsListDiv")
+
+                response.data.data.map(eachProduct => {
+
+                    productsListDiv.innerHTML +=
+                        `<div>
+                            <img src="./img/mini shoulder bag.webp">
+                            <p> ${eachProduct.productName} </p>
+                            <p> 
+                                <span>${eachProduct.currencyCode}</span> 
+                                <span>${eachProduct.productPrice}</span> 
+                            </p>
+                            <p> ${eachProduct.numberOfSale || 0} sold </p>
+                            <p> ${(eachProduct.isFreeShipping) ? "free shipping" : "no free shipping"} </p>
+                            <p>${eachProduct.shopName}</p>
+                        </div>`
+                })
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getAllProducts();
+
+
+    </script>
+
+</body>
+
+</html>

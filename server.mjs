@@ -21,22 +21,37 @@ app.use(express.json());
 app.use(cors());
 
 
-app.get("/products", async (req, res) => {
+// app.get("/products", async (req, res) => {
 
-    let result = await productModel
-        .find({})
-        .exec()
-        .catch(e => {
-            console.log("error in db: ", e);
-            res.status(500).send({ message: "error in getting all products" });
-            return
-        })
+//     let result = await productModel
+//         .find({})
+//         .exec()
+//         .catch(e => {
+//             console.log("error in db: ", e);
+//             res.status(500).send({ message: "error in getting all products" });
+//             return
+//         })
 
-    res.send({
-        message: "all products success ",
-        data: result
+//     res.send({
+//         message: "all products success ",
+//         data: result
+//     });
+// });
+
+app.get("/products" ,async (req , res)=>{ ///this method is in mongoose(query)///
+   let result = await productModel
+   .find({})
+   .exec()
+   .catch(e =>{
+    console.log("error in db:", e);
+    res.status(500).send({message:'error in getting all products'});
+    return;
+   })
+
+
+
+   res.send({message:'all products success',data: result});
     });
-});
 
 
 app.post("/product", async (req, res) => {

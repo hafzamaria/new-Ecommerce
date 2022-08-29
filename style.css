@@ -1,0 +1,18 @@
+#productsListDiv{
+    display: flex;
+}
+#productsListDiv>div{
+    border: 1px solid  black;
+    height: 500px;
+    width: 220px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    font-family: Verdana sans-serif;
+}
+#productsListDiv>div:hover{   
+    box-shadow: 0px 0px 10px black;
+}
+#productsListDiv>div>p>span:nth-child(2){
+    font-size: 32px;
+}
