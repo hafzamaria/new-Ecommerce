@@ -40,20 +40,21 @@
 
     <script>
 
-        // console.log(window.location.href);
-        let baseUrl;
+        // // console.log(window.location.href);
+        // let baseUrl;
 
-        if (window.location.href.indexOf("https") === -1){
-            baseUrl =  'https://localhost:3000';
+        // if (window.location.href.indexOf("https") === -1){
+        //     baseUrl =  'https://localhost:3000';
             
-        } else {
-            baseUrl = 'https://new-e.herokuapp.com/'
-        }
+        // } else {
+        //     baseUrl = 'https://new-e.herokuapp.com'
+        // }
 
         async function getAllProducts() {
             try {
-            const response = await axios.get(baseUrl + "/products");
-                // const response = await axios.get("http://localhost:3000/products");
+            // const response = await axios.get(baseUrl + "/products");
+                const response = await axios.get("http://localhost:3000/products");
+                // const response = await axios.get("https://new-e.herokuapp.com/products");
                 console.log(response.data.data);
 
                 let productsListDiv = document.querySelector("#productsListDiv")
