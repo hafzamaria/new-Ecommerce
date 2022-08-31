@@ -40,9 +40,19 @@
 
     <script>
 
+        // console.log(window.location.href);
+        let baseUrl;
+
+        if (window.location.href.indexOf("https") === -1){
+            baseUrl =  'https://localhost:3000';
+            
+        } else {
+            baseUrl = 'https://new-e.herokuapp.com'
+        }
+
         async function getAllProducts() {
             try {
-            const response = await axios.get("https://new-e.herokuapp.com/products");
+            const response = await axios.get(baseUrl + "/products");
                 // const response = await axios.get("http://localhost:3000/products");
                 console.log(response.data.data);
 
