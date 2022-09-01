@@ -65,3 +65,8 @@ h1{
 input{
     border-radius: 5px;
 }
+.delete{
+ color: red;
+ border-color: red;
+ border-radius: 5px;   
+}

@@ -76,14 +76,14 @@
 
 /////////////////////////////
 
-// let baseUrl;
+   let baseUrl;
 
-// if (window.location.href.indexOf("https") === -1) {
-//     baseUrl = "http://localhost:3000";
-// } else {
-//     baseUrl = "https://mongodb-crud-ecommerce-store.herokuapp.com";
-// }
-// ////////////////////////////
+if (window.location.href.indexOf("https") === -1) {
+    baseUrl = "http://localhost:3000";
+} else {
+    baseUrl = "https://mongodb-crud-ecommerce-store.herokuapp.com";
+}
+////////////////////////////
 
         function createProduct() {
 
@@ -95,8 +95,8 @@
             let isFreeShipping = document.querySelector("#isFreeShipping").value;
             let shopName = document.querySelector("#shopName").value;
 
-            axios.post('https://localhost:3000/product', {
-                // axios.post(`${baseUrl}/product`,  {
+            // axios.post('https://localhost:3000/product', {
+                axios.post(`${baseUrl}/product`, {
                     // axios.post('https://new-e.herokuapp.com',{
                 productName,
                 productPrice,

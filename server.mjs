@@ -39,15 +39,18 @@ app.use(cors());
 // });
 
 app.get("/products" ,async (req , res)=>{ ///this method is in mongoose(query)///
-   let result = await productModel
+
+
+    let result = await productModel
    .find({})
    .exec()
-   .catch(e =>{
+   .catch ( e => {
+
     console.log("error in db:", e);
+
     res.status(500).send({message:'error in getting all products'});
     return;
    })
-
 
 
    res.send({message:'all products success',data: result});
@@ -99,6 +102,43 @@ app.post("/product", async (req, res) => {
     console.log("result: ", result);
     res.send({ message: "product is added in database" });
 });
+
+app.use ('/*',(req ,res)=>{
+    console.log(" I am * handler");
+    res.status(404).send("this api doesn't exist");
+})
+
+// app.use("/*", (req, res) => {
+//     console.log(" I am * handler");
+//     res.status(404).send("this api doesn't exist");
+// })
+
+app.delete("/product/:id", async (req, res) => {
+
+    let _id = req.params.id;
+
+    try {
+        const result = await productModel.findByIdAndDelete(_id);
+        console.log("Deleted product: ", result);
+        res.send({
+            message: "deleted"
+        });
+        return;
+
+    } catch (err) {
+        console.log(err)
+        res.status(500).send({
+            message: "db error"
+        })
+    }
+
+
+
+})
+
+
+
+
 
 
 let PORT = process.env.PORT || 3000;
